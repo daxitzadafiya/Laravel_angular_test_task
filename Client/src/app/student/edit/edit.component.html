@@ -1,0 +1,87 @@
+<div class="container mt-4">
+    <h3 class="font-weight-bold">Update Student</h3>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+        <div class="row mt-4">
+            <div class="col">
+                <label for="name">Name:</label>
+                <input formControlName="name" id="name" type="text" [(ngModel)]="student.name" class="form-control">
+                <div *ngIf="f['name'].touched && f['name'].invalid" class=" text-danger">
+                    <p *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</p>
+                </div>
+            </div>
+            <div class="col">
+                <label for="age">Age:</label>
+                <input formControlName="age" id="age" type="number" [(ngModel)]="student.age" class="form-control">
+                <div *ngIf="f['age'].touched && f['age'].invalid" class=" text-danger">
+                    <p *ngIf="f['age'].errors && f['age'].errors['required']">age is required.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col">
+                <label for="email">Email:</label>
+                <input formControlName="email" id="email" type="email" [(ngModel)]="student.email" class="form-control">
+                <div *ngIf="f['email'].touched && f['email'].invalid" class=" text-danger">
+                    <p *ngIf="f['email'].errors && f['email'].errors['required']">Email is required.</p>
+                </div>
+            </div>
+            <div class="col">
+
+                <label for="dob">Date of birth:</label>
+                <input formControlName="dob" id="dob" type="text" [(ngModel)]="student.dob" class="form-control">
+                <div *ngIf="f['dob'].touched && f['dob'].invalid" class=" text-danger">
+                    <p *ngIf="f['dob'].errors && f['dob'].errors['required']">Dob is required.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col">
+                <label for="gender">Gender:</label>
+                <input formControlName="gender" id="gender" type="text" [(ngModel)]="student.gender"
+                    class="form-control">
+                <div *ngIf="f['gender'].touched && f['gender'].invalid" class=" text-danger">
+                    <p *ngIf="f['gender'].errors && f['gender'].errors['required']">Gender is required.</p>
+                </div>
+            </div>
+            <div class="col">
+                <label for="course">Course:</label>
+                <select class="form-control" formControlName="course" name="selectAction" [(ngModel)]="selectedValue">
+                    <option *ngFor="let op of courses" [ngValue]="op">
+                        {{op.name}}
+                    </option>
+                </select>
+                <div *ngIf="f['course'].touched && f['course'].invalid" class=" text-danger">
+                    <p *ngIf="f['course'].errors && f['course'].errors['required']">course is required.</p>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div class="mt-4 mb-3">
+            <label for="address">Address:</label>
+            <textarea formControlName="address" id="address" type="text" [(ngModel)]="student.address"
+                class="form-control" rows="3"></textarea>
+            <div *ngIf="f['address'].touched && f['address'].invalid" class=" text-danger">
+                <p *ngIf="f['address'].errors && f['address'].errors['required']">Address is required.</p>
+            </div>
+        </div>
+
+
+        <!-- <div class="form-group">
+            <label for="body">Body</label>
+            <textarea formControlName="body" id="body" type="text" [(ngModel)]="student.age" class="form-control">
+            </textarea>
+            <div *ngIf="f['body'].touched && f['body'].invalid" class=" text-danger">
+                <p *ngIf="f['body'].errors && f['body'].errors['required']">Body is required.</p>
+            </div>
+        </div> -->
+
+        <button class="btn btn-success mr-2" type="submit" [disabled]="!form.valid">Update</button>
+        <a href="#" routerLink="/students/index" class="btn btn-outline-primary">Back</a>
+    </form>
+</div>

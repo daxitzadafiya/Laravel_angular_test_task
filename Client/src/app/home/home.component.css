@@ -1,0 +1,57 @@
+p {
+  font-family: Lato;
+}
+
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.popuptext {
+  width: 500px;
+  background-color: #555;
+  color: #fff;
+  text-align: celeftnter;
+  border-radius: 6px;
+  padding: 8px 8px 8px 8px;
+  position: absolute;
+  z-index: 1;
+  bottom: 35%;
+  left: 25%;
+  margin-left: 20%;
+  line-height: 20px;
+  transform: translate(-50%, -50%);
+}
+
+.close-button {
+  float: right;
+  width: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  background-color: lightgray;
+}
+
+.close-button:hover {
+  background-color: darkgray;
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 8px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.button-greencolor {
+  background-color: #4caf50; /* Green */
+}
+
+.button-redcolor {
+  background-color: #f44336; /* Green */
+}

@@ -1,0 +1,89 @@
+<div class="container mt-4">
+    <h3 class="font-weight-bold">Create New Student</h3>
+    <div class="alert alert-warning" role="alert" *ngIf="courses.length==0">
+        First <a routerLink="/courses/course/create" class="alert-link">create new </a> course for student in order to create new student
+    </div>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+        <div class="row mt-4">
+
+            <div class="col">
+                <label for="name">Name:</label>
+                <input formControlName="name" id="name" type="text" class="form-control">
+                <div *ngIf="f['name'].touched && f['name'].invalid" class="text-danger">
+                    <p *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</p>
+                </div>
+            </div>
+
+            <div class="col">
+                <label for="age">Age:</label>
+                <input formControlName="age" id="age" type="number" class="form-control">
+                <div *ngIf="f['age'].touched && f['age'].invalid" class="text-danger">
+                    <div *ngIf="f['age'].errors && f['age'].errors['required']">age is required.</div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="row mt-3">
+
+            <div class="col">
+                <label for="email">Email:</label>
+                <input formControlName="email" id="email" type="email" class="form-control">
+                <div *ngIf="f['email'].touched && f['email'].invalid" class="text-danger">
+                    <div *ngIf="f['email'].errors && f['email'].errors['required']">Email is required.</div>
+                </div>
+            </div>
+
+            <div class="col">
+                <label for="dob">Date of birth:</label>
+                <input formControlName="dob" id="dob" type="date" class="form-control">
+                <div *ngIf="f['dob'].touched && f['dob'].invalid" class="text-danger">
+                    <div *ngIf="f['dob'].errors && f['dob'].errors['required']">Dob is required.</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row mt-3">
+
+            <div class="col">
+                <label for="gender">Gender:</label>
+                <input formControlName="gender" id="gender" type="text" class="form-control">
+                <div *ngIf="f['gender'].touched && f['gender'].invalid" class="text-danger">
+                    <div *ngIf="f['gender'].errors && f['gender'].errors['required']">Gender is required.</div>
+                </div>
+            </div>
+
+
+
+            <div class="col">
+                <label for="course_id">Course:</label>
+                <select class="form-control" name="selectAction" formControlName="course_id">
+                    <option *ngFor="let op of courses" [value]="op.id">
+                        {{op.name}}
+                    </option>
+                </select>
+                <div *ngIf="f['course_id'].touched && f['course_id'].invalid" class="text-danger">
+                    <div *ngIf="f['course_id'].errors && f['course_id'].errors['required']">course is required.</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group mt-4">
+
+            <label for="address">Address:</label>
+            <textarea id="address" formControlName="address" class="form-control" id="exampleFormControlTextarea1"
+                rows="3"></textarea>
+            <div *ngIf="f['address'].touched && f['address'].invalid" class="text-danger">
+                <div *ngIf="f['address'].errors && f['address'].errors['required']">Address is required.</div>
+            </div>
+
+        </div>
+
+        <button class="btn btn-success mr-2" type="submit" [disabled]="!form.valid">Submit</button>
+        <a href="#" routerLink="/students/index" class="btn btn-outline-primary">Back</a>
+    </form>
+</div>
