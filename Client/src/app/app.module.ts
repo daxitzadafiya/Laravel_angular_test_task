@@ -10,9 +10,10 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
-import { StudentsComponent } from './students/students.component';
+
 import { AgGridModule } from 'ag-grid-angular';
 import { StudentModule } from './student/student.module';
+import { NgxVideoListPlayerModule } from 'ngx-video-list-player';
 @NgModule( {
   declarations: [
     AppComponent,
@@ -20,11 +21,11 @@ import { StudentModule } from './student/student.module';
     RegisterComponent,
     HomeComponent,
     ProfileComponent,
-    StudentsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgxVideoListPlayerModule,
     StudentModule,
     FormsModule,
     HttpClientModule, AgGridModule.withComponents( [] )

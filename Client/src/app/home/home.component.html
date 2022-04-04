@@ -2,12 +2,9 @@
   <header class=" mt-5 pt-1">
     <p>{{ content }}</p>
     <div id="instructions">
-      <video id="my_video_1" class="video-js vjs-default-skin w-100 h-100" width="640px" height="267px" controls
-        preload="none" 
-        data-setup='{ "aspectRatio":"640:267", "playbackRates": [1, 1.5, 2] }'>
-        <source src="https://vjs.zencdn.net/v/oceans.mp4" type='video/mp4' />
-        <source src="https://vjs.zencdn.net/v/oceans.webm" type='video/webm' />
-      </video>
+    <ngx-video-list-player [config]="config">
+    
+    </ngx-video-list-player>
     </div>
   </header>
 </div>

@@ -5,7 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
-import { StudentsComponent } from './students/students.component';
+
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -14,14 +14,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'stud', loadChildren: () => import( './student/student.module' ).then( m => m.StudentModule ) },
   { path: 'courses', loadChildren: () => import( './my-course/my-course.module' ).then( m => m.MyCourseModule ) },
-  {
-    path: 'student/add/:id',
-    component: StudentsComponent
-  },
-  {
-    path: 'student/edit/:id',
-    component: StudentsComponent
-  },
+
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

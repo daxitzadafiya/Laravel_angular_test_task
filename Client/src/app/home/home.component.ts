@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../_services/user.service';
 import Player from '@vimeo/player';
+import { IVideoConfig } from "ngx-video-list-player";
 
 declare const window: any;
 @Component( {
@@ -20,110 +21,67 @@ export class HomeComponent implements OnInit
   private language = 'en';
   private player: any;
   constructor ( private userService: UserService ) { }
-
+     config: IVideoConfig = {
+        isVideoLoader: true,
+        isAutoPlay: false,
+        isFirstVideoAutoPlay: false,
+        subtitleOffText: "",
+        subtitleText: "",
+        volumeCookieName: "NgxVideoListPlayerVolume",
+        videoIndexCookieName: "NgxVideoListPlayerIndex",
+        sources: [{
+            src: "https://drive.google.com/uc?export=download&id=1xFTmNv2SUYdJDMVAaLuyglgvg1aFRkxc",
+            videoName: "Panic! At The Disco - High Hopes",
+            artist: "Panic! At The Disco",
+            subtitles: [
+                {
+                    name: "English",
+                    src: "./assets/subtitles/en.vtt",
+                    default: false
+                },
+                {
+                    name: "Deutsche",
+                    src: "./assets/subtitles/de.vtt",
+                    default: false
+                }
+            ]
+        },
+        {
+            src: "o_1aF54DO60",
+            isYoutubeVideo: true,
+            videoName: "(Youtube) Young and Beautiful",
+            artist: "Lana Del Rey"
+        },
+        {
+            src: "https://drive.google.com/uc?export=download&id=1pef_q-vfGKA4Z5XnrxscC1L8KHAngth9",
+            videoName: "Martin Garrix feat. Bonn - High On Life",
+            artist: "Martin Garrix"
+        },
+        {
+            src: "https://drive.google.com/uc?export=download&id=1xFTmNv2SUYdJDMVAaLuyglgvg1aFRkxc",
+            videoName: "Panic! At The Disco - High Hopes",
+            artist: "Panic! At The Disco",
+            subtitles: [
+                {
+                    name: "English",
+                    src: "./assets/subtitles/en.vtt",
+                    default: false
+                },
+                {
+                    name: "Deutsche",
+                    src: "./assets/subtitles/de.vtt",
+                    default: false
+                }
+            ]
+        }]          
+    };
   ngOnInit (): void
   {
 
-    this.playPause();
-    this.initPlayer();
-    this.userService.getPublicContent().subscribe( {
-      next: data =>
-      {
-        this.content = data;
-      },
-      error: err =>
-      {
-        this.content = JSON.parse( err.error ).message;
-      }
-    } );
+   
   }
-  private initPlayer ()
-  {
-
-    this.player = new Player( 'intro_explanimation', {} );
-    this.player.enableTextTrack( this.language, 'subtitles' ).then( ( track: any ) =>
-    {
-      console.log( track );
-    } ).catch( ( error: any ) =>
-    {
-      console.log( error );
-      switch ( error.name )
-      {
-        case 'InvalidTrackLanguageError':
-          // no track was available with the specified language
-          break;
-        case 'InvalidTrackError':
-          // no track was available with the specified language and kind
-          break;
-        default:
-          // some other error occurred
-          break;
-      }
-    } );
-
-  }
-  pauseVideo ( videoplayer: any )
-  {
-    videoplayer.nativeElement.play();
-  
-    setTimeout( () => 
-    {
-      videoplayer.nativeElement.pause();
-      if ( videoplayer.nativeElement.paused )
-      {
-        this.show = !this.show;
-      }
-    }, 5000 );
-    // }
-  }
-
-  closebutton ( videoplayer: any )
-  {
-    this.show = !this.show;
-    videoplayer.nativeElement.play();
-  }
-
-  toggleVideo ( event: any )
-  {
-    this.videoplayer?.nativeElement.play();
-  }
-
-
-  makeBig ()
-  {
-    var myVideo: any = document.getElementById( 'my_video_1' );
-    myVideo.width = 560;
-  }
-
-  makeSmall ()
-  {
-    var myVideo: any = document.getElementById( 'my_video_1' );
-    myVideo.width = 320;
-  }
-
-  makeNormal ()
-  {
-    var myVideo: any = document.getElementById( 'my_video_1' );
-    myVideo.width = 420;
-  }
-
-  skip ( value: any )
-  {
-    let video: any = document.getElementById( 'my_video_1' );
-    video.currentTime += value;
-  }
-
-  restart ()
-  {
-    let video: any = document.getElementById( 'my_video_1' );
-    video.currentTime = 0;
-  }
-  playPause ()
-  {
-    var myVideo: any = document.getElementById( 'my_video_1' );
-    if ( myVideo.paused ) myVideo.play();
-    else myVideo.pause();
-  }
+ 
+ 
 
 
 }
